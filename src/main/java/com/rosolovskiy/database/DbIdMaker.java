@@ -16,6 +16,7 @@ import java.net.UnknownHostException;
  */
 public class DbIdMaker {
 
+    protected final long dbIdMakerBirthDate = 1349980022551L; // shifts unix timestamp epoch, so we have more unique ids
     private final long machineIdSize = 10L; // 10 bits
     private final long maxMachineId = -1L ^ (-1L << machineIdSize);
     private final long sequenceSize = 12L; // 12 bits
@@ -73,7 +74,7 @@ public class DbIdMaker {
         }
 
         lastTime = timestamp;
-        return (timestamp << timestampLeftShift) | (machineId << machineIdLeftShift) | sequence;
+        return (timestamp - dbIdMakerBirthDate << timestampLeftShift) | (machineId << machineIdLeftShift) | sequence;
     }
 
     protected long time() {
