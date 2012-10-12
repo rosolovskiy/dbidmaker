@@ -49,7 +49,7 @@ public class DbIdMaker {
      */
     public DbIdMaker(final long machineId) {
         if (machineId > maxMachineId || machineId < 0) {
-            throw new IllegalArgumentException("Machine argument must be between 0 and " + maxMachineId);
+            throw new IllegalArgumentException("Machine id argument must be between 0 and " + maxMachineId);
         }
         this.machineId = machineId;
     }
