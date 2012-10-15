@@ -9,3 +9,5 @@ DbIdMaker generates pseudo unique 63 bits ids. It can be used for generating dat
 1. *timestemp* in milliseconds, **41 bits**
 2. *machine id*, **10 bits** (by default: a part of last octects of machine mac address)
 3. *sequence*, **12bits** (sequence number by modulo 2^12, allows given machine per each millisecond of time to have 4096 unique ids)
+
+<small>&copy; Licensed under the Apache License, [Version 2.0](http://www.apache.org/licenses/LICENSE-2.0)</small>
