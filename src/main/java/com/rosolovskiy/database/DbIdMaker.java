@@ -51,8 +51,9 @@ public class DbIdMaker {
         final InetAddress ip = InetAddress.getLocalHost();
         final NetworkInterface network = NetworkInterface.getByInetAddress(ip);
         final byte[] mac = network.getHardwareAddress();
-        final byte[] macMachineId = new byte[] { mac[3], mac[4], mac[5]};
-        machineId = new BigInteger(macMachineId).longValue() % maxMachineId;
+        final byte[] macMachineId = new byte[] {0, mac[3], mac[4], mac[5]};
+        machineId = new BigInteger(macMachineId).longValue() & maxMachineId;
+        assert machineId >= 0 && machineId <= maxMachineId;
     }
 
     /**
