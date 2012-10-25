@@ -21,4 +21,14 @@ public class DbIdMakerTest {
         final long maxMachineId = -1L ^ (-1L << 10); // 10 bits is a maximum size of machine id in generated id
         new DbIdMaker(maxMachineId + 1);
     }
+
+    @Test
+    public void positiveTest() throws UnknownHostException, SocketException {
+        DbIdMaker idMakerMac = new DbIdMaker();
+        DbIdMaker idMakerCustom = new DbIdMaker(5);
+        final long id1 = idMakerMac.makeId();
+        final long id2 = idMakerCustom.makeId();
+        Assert.assertTrue(id1 > 0);
+        Assert.assertTrue(id2 > 0);
+    }
 }
